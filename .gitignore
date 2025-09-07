@@ -1,0 +1,8 @@
+# Node modules
+backend/node_modules/
+
+# SQLite database
+backend/users.db
+
+# Logs
+*.log
