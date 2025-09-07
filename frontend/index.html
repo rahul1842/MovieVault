@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MovieVerse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo-circle">MV</div>
+      <div>
+        <div class="brand-title">MovieVault</div>
+        <div class="mini">Discover • Save • Rate</div>
+      </div>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div id="navHome" class="nav-btn active" onclick="showSection('home')">Home</div>
+    <div id="navFavorites" class="nav-btn" onclick="showSection('favorites')">Favorites</div>
+    <div id="navWatch" class="nav-btn" onclick="showSection('watchlater')">Watch Later</div>
+    <div id="navRated" class="nav-btn" onclick="showSection('rated')">Rated</div>
+
+    <div class="nav-divider"></div>
+    <div class="chip" id="resultsCount">Popular</div>
+    <div class="nav-divider"></div>
+
+    <div class="search-bar">
+      <input id="sideSearch" class="search-input" placeholder="Quick search (press Enter)" onkeydown="sideSearchKey(event)">
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="profile">
+      <div class="avatar">
+        <div id="avatarInitial">G</div>
+      </div>
+      <div>
+        <div id="userName" class="profile-name">Guest</div>
+        <div id="userEmail" class="mini">Not signed in</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="top-row">
+      <div class="hero">
+        <div id="greetLine" class="greeting">Welcome</div>
+        <div id="subLine" class="mini">Explore movies, add to lists, rate instantly</div>
+      </div>
+      <div class="right-controls">
+        <div id="userBadge" class="badge">Guest</div>
+        <div class="auth-controls">
+          <button id="openLogin" class="action-btn" onclick="openAuth('login')">Login</button>
+          <button id="openSignup" class="action-btn" onclick="openAuth('signup')">Sign up</button>
+          <button id="logoutBtn" class="action-btn hidden" onclick="performLogout()">Logout</button>
+        </div>
+
+      </div>
+    </div>
+
+    <section id="homeView">
+      <div class="section-header">
+        <h3 class="section-title">Trending & Popular</h3>
+      </div>
+      <div id="homeGrid" class="card-grid"></div>
+    </section>
+
+    <section id="sectionFavorites" class="hidden">
+      <h3 class="section-title">Your Favorites</h3>
+      <div id="favGrid" class="card-grid"></div>
+    </section>
+
+    <section id="sectionWatchlater" class="hidden">
+      <h3 class="section-title">Watch Later</h3>
+      <div id="wlGrid" class="card-grid"></div>
+    </section>
+
+    <section id="sectionRated" class="hidden">
+      <h3 class="section-title">Your Ratings</h3>
+      <div id="ratedGrid" class="card-grid"></div>
+    </section>
+  </main>
+</div>
+
+<!-- Auth Modal -->
+<div id="authModal" class="auth-modal hidden">
+  <div class="auth-panel">
+    <div class="auth-header">
+      <div id="authTitle">Login</div>
+      <div class="auth-close" onclick="closeAuth()">✕</div>
+    </div>
+
+    <div id="loginForm" class="auth-form">
+      <input id="loginUserField" placeholder="Email" />
+      <input id="loginPassField" type="password" placeholder="Password" />
+      <div class="auth-buttons">
+        <button onclick="performLogin()">Login</button>
+        <button onclick="switchAuth('signup')">Sign up</button>
+      </div>
+    </div>
+
+    <div id="signupForm" class="auth-form hidden">
+      <input id="signupUserField" placeholder="Username" />
+      <input id="signupEmailField" placeholder="Email" />
+      <input id="signupPassField" type="password" placeholder="Password" />
+      <div class="auth-buttons">
+        <button onclick="performSignup()">Create</button>
+        <button onclick="switchAuth('login')">Back</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="message" class="message-box"></div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
